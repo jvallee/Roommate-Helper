@@ -1,0 +1,14 @@
+mongo
+pymongo
+mongoengine
+tqdm
+colorama
+python-dateutil
+switch
+requests
+jsonschema
+certifi
+chardet
+urllib3
+six
+setuptools
