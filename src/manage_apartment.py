@@ -113,3 +113,5 @@ def add_occupants():
 
 def delete_occupant():
     print("NOT IMPLEMENTED")
+    state.reload_apartment()
+    util.user_select(state.active_apartment.occupants)
