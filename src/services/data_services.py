@@ -133,11 +133,12 @@ def create_task(task_name: str, assigned_to: str, period_length: int = None):
     return task
 
 
-def delete_task(task_id: str):
-    task = Task.objects().filter(id=task_id).first()
-    if not Task:
+def delete_task(task: Task, apartment_id):
+    apartment = Apartment.objects.filter(id=apartment_id).first()
+    if not task and not apartment:
+        error_msg('Could not find Apartment or Task')
         return False
 
     else:
-        task.delete()
+        Apartment.objects(id=apartment_id).update_one(pull__tasks=task)
         return True

@@ -83,16 +83,18 @@ def view_tasks():
 def delete_tasks():
     state.reload_apartment()
     tasks = state.active_apartment.tasks
-    is_success = False
+    tasks_name = list(map(lambda t: t.name, tasks))
     if not tasks or len(tasks) == 0:
         print("No tasks to delete")
         return
     else:
-        task, index = user_select(tasks)
+        task_name, index = user_select(tasks_name)
+        task = tasks[index]
         try:
-            is_success = ds.delete_task(task.id)
+            print(f'{state.active_apartment.id}')
+            is_success = ds.delete_task(task, state.active_apartment.id)
             if is_success:
-                util.success_msg("Task successfully deleted")
+                util.success_msg(f"Task: \"{task_name}\" successfully deleted")
                 state.reload_apartment()
         except:
             util.error_msg(f"Unexpected Error occurred deleting task: {sys.exc_info()[0]}")
