@@ -105,7 +105,7 @@ MAINTAINERS
 -----------
 
 Current maintainers:
- * Jason Vallee - last updated October 19, 2020
+ * Jason Vallee - last updated November 2, 2020
 
 
  
