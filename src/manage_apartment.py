@@ -1,3 +1,5 @@
+from typing import List
+
 from switch import Switch
 import infrastructure.state as state
 from infrastructure.util import user_select, get_action, unknown_command, exit_app
@@ -91,7 +93,6 @@ def delete_tasks():
         task_name, index = user_select(tasks_name)
         task = tasks[index]
         try:
-            print(f'{state.active_apartment.id}')
             is_success = ds.delete_task(task, state.active_apartment.id)
             if is_success:
                 util.success_msg(f"Task: \"{task_name}\" successfully deleted")
@@ -114,6 +115,18 @@ def add_occupants():
 
 
 def delete_occupant():
-    print("NOT IMPLEMENTED")
     state.reload_apartment()
-    util.user_select(state.active_apartment.occupants)
+    occupants = state.active_apartment.occupants
+    if not occupants or len(occupants) == 0:
+        print("No occupants to delete")
+        return
+
+    occupant_name, index = util.user_select(state.active_apartment.occupants)
+    try:
+        is_success = ds.delete_occupant(occupant_name, state.active_apartment.id)
+        if is_success:
+            util.success_msg(f"Task: \"{occupant_name}\" successfully deleted")
+            state.reload_apartment()
+
+    except:
+        util.error_msg(f"Unexpected Error occurred deleting task: {sys.exc_info()[0]}")
