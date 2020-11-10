@@ -48,11 +48,11 @@ def print_header():
                                       $$$$$$$$$
                                        $$$$$$ """
 
-    print(Fore.WHITE + '****************  Jason Vallee\'s Scheduler  ****************')
+    print(Fore.WHITE + '****************  Jason Vallee\'s Apartment Manager  ****************')
     print(Fore.GREEN + reference)
     print(Fore.WHITE + '*********************************************')
     print()
-    print("Welcome to Jason's Pairing Scheduler!")
+    print("Welcome to Jason's Apartment Manager!")
     print("What would you like to do?")
     print()
 

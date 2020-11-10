@@ -1,5 +1,4 @@
 from typing import List
-
 from switch import Switch
 import infrastructure.state as state
 from infrastructure.util import user_select, get_action, unknown_command, exit_app
@@ -102,14 +101,14 @@ def delete_tasks():
 
 
 def view_occupant():
-    occupants = state.active_apartment.occupants
+    occupants: List[str] = state.active_apartment.occupants
     print("The occupants are: ")
     for occupant in occupants:
         print(f" {occupant}")
 
 
 def add_occupants():
-    occupant_name = input("What is the name of the occupant you would like to add?\n    ")
+    occupant_name: str = input("What is the name of the occupant you would like to add?\n    ")
     ds.add_occupant_to_apartment(occupant_name, state.active_apartment.id)
     util.success_msg("Occupant added to apartment")
 
