@@ -15,7 +15,7 @@ CONTENTS OF THIS FILE
  INTRODUCTION
 ------------
 
-This application's goal is to help people manage the chores and tasks of an apartment. 
+This application's goal is to help people manage the chores and tasks of an apartment. It is a terminal application that connects to a mongodb database.
 
 
 
